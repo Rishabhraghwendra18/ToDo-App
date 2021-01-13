@@ -1,0 +1,45 @@
+.Todo__List {
+  list-style: none;
+}
+
+.App {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.App h1 {
+  background-image: -webkit-gradient(linear, left top, right top, from(#0084ff), to(#13e5f0));
+  background-image: linear-gradient(to right, #0084ff, #13e5f0);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-size: 4.5rem;
+}
+
+.App .container {
+  margin-top: 6rem;
+}
+
+h2 {
+  background-image: -webkit-gradient(linear, left top, right top, from(#0084ff), to(#00f2ff));
+  background-image: linear-gradient(to right, #0084ff, #00f2ff);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.Todo__Res {
+  border: 2px solid black;
+  padding: 5rem;
+}
+
+.Todo__Add {
+  border: 2px solid black;
+  margin-left: 50%;
+  padding: 5rem;
+}
+/*# sourceMappingURL=App.css.map */
