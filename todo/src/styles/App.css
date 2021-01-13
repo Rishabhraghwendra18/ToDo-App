@@ -20,8 +20,21 @@
   font-size: 4.5rem;
 }
 
-.App .container {
+.App .container-fluid {
   margin-top: 6rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 h2 {
@@ -33,13 +46,27 @@ h2 {
 }
 
 .Todo__Res {
-  border: 2px solid black;
+  border: 2px solid #0084ff;
   padding: 5rem;
+  width: 50%;
+  border-radius: 20px;
 }
 
 .Todo__Add {
-  border: 2px solid black;
-  margin-left: 50%;
+  border: 2px solid  #0084ff;
   padding: 5rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 50%;
+  border-radius: 20px;
+}
+
+@media screen and (max-width: 984px) {
+  .container-fluid {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 /*# sourceMappingURL=App.css.map */

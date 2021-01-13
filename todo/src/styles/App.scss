@@ -11,8 +11,12 @@
         background-clip: text;
         font-size: 4.5rem;
     }
-    .container{
+    .container-fluid{
         margin-top: 6rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
     }
 }
 h2{
@@ -22,11 +26,20 @@ h2{
     background-clip: text;
 }
 .Todo__Res{
-    border: 2px solid black;
+    border: 2px solid #0084ff;
     padding: 5rem;
+    width: 50%;
+    border-radius: 20px;
 }
 .Todo__Add{
-    border: 2px solid black;
-    margin-left: 50%;
+    border: 2px solid  #0084ff;
     padding: 5rem;
+    box-sizing: border-box;
+    width: 50%;
+    border-radius: 20px;
+}
+@media screen and (max-width:984px){
+    .container-fluid{
+        flex-direction: column;
+    }
 }
