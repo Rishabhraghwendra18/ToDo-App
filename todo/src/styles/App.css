@@ -47,6 +47,28 @@ h2 {
   background-clip: text;
 }
 
+.List {
+  width: 100%;
+  border: none;
+  height: 100%;
+  overflow: auto;
+}
+
+.List::-webkit-scrollbar {
+  width: 10px;
+}
+
+.List::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px grey;
+          box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+.List::-webkit-scrollbar-thumb {
+  background: #0084ff;
+  border-radius: 10px;
+}
+
 .Todo__Res {
   border: 2px solid #0084ff;
   padding: 5rem;
@@ -64,5 +86,10 @@ h2 {
           box-sizing: border-box;
   width: 35%;
   border-radius: 20px;
+}
+
+.dropdown {
+  display: inline;
+  margin: 2rem;
 }
 /*# sourceMappingURL=App.css.map */
