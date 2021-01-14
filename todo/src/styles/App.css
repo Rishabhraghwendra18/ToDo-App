@@ -35,6 +35,8 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap-reverse;
+      flex-wrap: wrap-reverse;
 }
 
 h2 {
@@ -48,25 +50,18 @@ h2 {
 .Todo__Res {
   border: 2px solid #0084ff;
   padding: 5rem;
-  width: 50%;
+  width: 35%;
   border-radius: 20px;
+  margin-top: 3rem;
 }
 
 .Todo__Add {
+  margin-top: 3rem;
   border: 2px solid  #0084ff;
   padding: 5rem;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  width: 50%;
+  width: 35%;
   border-radius: 20px;
-}
-
-@media screen and (max-width: 984px) {
-  .container-fluid {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
 }
 /*# sourceMappingURL=App.css.map */
