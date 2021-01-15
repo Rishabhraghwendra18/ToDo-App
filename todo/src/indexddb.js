@@ -88,7 +88,7 @@ function Update(obj) {
         const tx = db.transaction("TodoList", "readwrite");
         const store = tx.objectStore("TodoList");
         store.openCursor().onsuccess = function (e) {
-            const cursor = event.target.result;
+            const cursor = e.target.result;
             if(cursor){
                 if (cursor.key===obj.id) {
                         const request = cursor.update(obj);
