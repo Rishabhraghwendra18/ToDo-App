@@ -1,11 +1,17 @@
 import './styles/App.css';
-import { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { useState,useEffect } from 'react';
+import { Form, Button, ListGroup } from 'react-bootstrap';
 import DropDown from './components/DropDowns';
+import DeleteButton from './components/DeleteButton';
+import {Add,Retrive} from './indexddb';
 function App() {
   const [todoList, setTodo] = useState([]);
+  const [checked,setCheck]=useState({});
   const [Ttitle, setTitle] = useState('');
-  const [desc, setDesc] = useState('');
+  const [desc, setDesc] = useState('No Description');
+  useEffect(()=>{
+    setTodo(Retrive()); 
+  },[])
   return (
     <div className="App d-flex flex-column">
       <h1 className="mt-3">Your ToDo App</h1>
@@ -14,7 +20,13 @@ function App() {
           <h2>Your ToDo List</h2>
           <div className="List">
             <ul className="Todo__List">
-              {todoList ? todoList.map((item, index) => <li key={index}>{item.title}<DropDown desc={item.desc}/></li>) : 0}
+              {todoList.map((item) => <li key={item.id}>
+                <ListGroup>
+                  <ListGroup.Item><input type="checkbox" onClick={(e)=>{
+                    if(e.target.checked){setCheck(item);console.log(item);}
+                  }}/>{item.title}<DropDown desc={item.desc} /><DeleteButton id={item.id}/></ListGroup.Item>
+                </ListGroup>
+              </li>)}
             </ul>
           </div>
         </div>
@@ -31,11 +43,13 @@ function App() {
             </Form.Group>
             <Button variant="primary" type="submit" onClick={(e) => {
               e.preventDefault();
-              const kk = {
+              const obj = {
                 title: Ttitle,
-                desc: desc
+                desc: desc,
+                id:Math.random()
               }
-              setTodo([...todoList, kk]);
+              Add(obj);
+              setTodo([...todoList, obj]);
             }}>
               Submit
             </Button>

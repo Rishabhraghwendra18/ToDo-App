@@ -92,4 +92,10 @@ h2 {
   display: inline;
   margin: 2rem;
 }
+
+input[type="checkbox"] {
+  margin: 0 6px;
+  position: relative;
+  top: 2px;
+}
 /*# sourceMappingURL=App.css.map */
