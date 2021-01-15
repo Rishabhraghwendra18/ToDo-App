@@ -1,17 +1,17 @@
 import './styles/App.css';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Form, Button, ListGroup } from 'react-bootstrap';
 import DropDown from './components/DropDowns';
 import DeleteButton from './components/DeleteButton';
-import {Add,Retrive} from './indexddb';
+import { Add, Retrive,Update} from './indexddb';
 function App() {
   const [todoList, setTodo] = useState([]);
-  const [checked,setCheck]=useState({});
+  const [checked, setCheck] = useState({});
   const [Ttitle, setTitle] = useState('');
   const [desc, setDesc] = useState('No Description');
-  useEffect(()=>{
-    setTodo(Retrive()); 
-  },[])
+  useEffect(() => {
+    setTodo(Retrive())
+  }, [])
   return (
     <div className="App d-flex flex-column">
       <h1 className="mt-3">Your ToDo App</h1>
@@ -20,13 +20,14 @@ function App() {
           <h2>Your ToDo List</h2>
           <div className="List">
             <ul className="Todo__List">
-              {todoList.map((item) => <li key={item.id}>
-                <ListGroup>
-                  <ListGroup.Item><input type="checkbox" onClick={(e)=>{
-                    if(e.target.checked){setCheck(item);console.log(item);}
-                  }}/>{item.title}<DropDown desc={item.desc} /><DeleteButton id={item.id}/></ListGroup.Item>
-                </ListGroup>
-              </li>)}
+              {
+                todoList.map((item) => <li key={item.id}>
+                  <ListGroup>
+                    <ListGroup.Item><input type="checkbox" onClick={(e) => {
+                      if (e.target.checked) { setCheck(item); console.log(item); }
+                    }} />{item.title}<DropDown desc={item.desc} /><DeleteButton id={item.id} /></ListGroup.Item>
+                  </ListGroup>
+                </li>)}
             </ul>
           </div>
         </div>
@@ -35,23 +36,35 @@ function App() {
           <Form>
             <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label>Title</Form.Label>
-              <Form.Control type="text" placeholder="Take Jack to School..." onChange={e => setTitle(e.target.value)} />
+              <Form.Control type="text" placeholder="Take Jack to School..." onChange={e => setTitle(e.target.value)} defaultValue={checked.title} />
             </Form.Group>
             <Form.Group controlId="exampleForm.ControlTextarea1">
               <Form.Label>Description</Form.Label>
-              <Form.Control as="textarea" rows={3} placeholder="Buy him a cake..." onChange={e => setDesc(e.target.value)} onDefault={desc} />
+              <Form.Control as="textarea" rows={3} placeholder="Buy him a cake..." onChange={e => setDesc(e.target.value)} defaultValue={checked.desc} />
             </Form.Group>
-            <Button variant="primary" type="submit" onClick={(e) => {
+            <Button variant="primary" id="submit" type="submit" onClick={(e) => {
               e.preventDefault();
               const obj = {
                 title: Ttitle,
                 desc: desc,
-                id:Math.random()
+                id: Math.random()
               }
               Add(obj);
               setTodo([...todoList, obj]);
             }}>
               Submit
+            </Button>
+            <Button variant="primary" id="update" type="submit" onClick={(e) => {
+              e.preventDefault();
+              const obj = {
+                title: Ttitle,
+                desc: desc,
+                id: checked.id
+              }
+              Update(obj);
+              setTodo([...todoList, obj]);
+            }}>
+              Update
             </Button>
           </Form>
         </div>
